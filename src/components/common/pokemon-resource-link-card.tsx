@@ -3,8 +3,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Link } from "expo-router";
 
-import { PokemonResourceLink } from "../models";
-import { Colors } from "../utils";
+import { PokemonResourceLink } from "../../models";
+import { Colors } from "../../utils";
 
 interface PokemonResourceLinkCardProps {
   item: PokemonResourceLink;
@@ -43,6 +43,7 @@ export const PokemonResourceLinkCard: React.FC<PokemonResourceLinkCardProps> =
         </View>
       );
     };
+
     return (
       <View style={styles.container}>
         {href ? (

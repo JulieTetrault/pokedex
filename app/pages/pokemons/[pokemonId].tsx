@@ -1,10 +1,8 @@
-import React from "react";
-import { ActivityIndicator } from "react-native";
+import React, { useMemo } from "react";
 
 import { useLocalSearchParams } from "expo-router";
 
-import { PokemonDetails } from "../../../src/components";
-import PageContainer from "../../../src/components/page-container";
+import { PageContainer, PokemonDetails } from "../../../src/components";
 import {
   usePokemonEvolutionsQuery,
   usePokemonQuery,
@@ -26,23 +24,25 @@ const PokemonDetailScreen: React.FC = () => {
       evolutionChainId: pokemonSpecies?.evolutionChainId,
     });
 
+  const isLoading = useMemo(() => {
+    return (
+      isPokemonLoading || isPokemonSpeciesLoading || isPokemonEvolutionsLoading
+    );
+  }, [isPokemonLoading, isPokemonSpeciesLoading, isPokemonEvolutionsLoading]);
+
   return (
-    <PageContainer title={pokemon?.name} image={pokemon?.image}>
-      {(isPokemonLoading ||
-        isPokemonSpeciesLoading ||
-        isPokemonEvolutionsLoading) && <ActivityIndicator />}
-      {!isPokemonLoading &&
-        !isPokemonSpeciesLoading &&
-        !isPokemonEvolutionsLoading &&
-        pokemon &&
-        pokemonSpecies &&
-        pokemonEvolutions && (
-          <PokemonDetails
-            types={pokemon.types}
-            moves={pokemon.moves}
-            evolutions={pokemonEvolutions}
-          />
-        )}
+    <PageContainer
+      title={pokemon?.name}
+      imageUri={pokemon?.image}
+      isLoading={isLoading}
+    >
+      {pokemon && pokemonSpecies && pokemonEvolutions && (
+        <PokemonDetails
+          types={pokemon.types}
+          moves={pokemon.moves}
+          evolutions={pokemonEvolutions}
+        />
+      )}
     </PageContainer>
   );
 };

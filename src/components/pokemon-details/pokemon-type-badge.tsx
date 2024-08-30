@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.TRANSPARENT,
     borderRadius: 2,
     borderWidth: 2,
-    flex: 1,
     minHeight: 18,
   },
   badgeText: {

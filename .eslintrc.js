@@ -5,7 +5,6 @@ module.exports = {
         node: true,
         'react-native/react-native': true,
     },
-    ignorePatterns: ['build', 'dist', 'coverage', 'reports'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -18,22 +17,15 @@ module.exports = {
     },
     plugins: ['simple-import-sort', 'unused-imports', 'react-perf'],
     extends: [
-        'airbnb',
-        'airbnb-typescript',
-        'airbnb/hooks',
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:eslint-comments/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
-        'plugin:jest/recommended',
-        'plugin:jest-dom/recommended',
-        'plugin:jest-formatting/recommended',
         'plugin:prettier/recommended',
         'plugin:promise/recommended',
         'plugin:react/recommended',
         'plugin:react-native/all',
-        'plugin:testing-library/react',
     ],
     settings: {
         react: {
@@ -61,6 +53,10 @@ module.exports = {
         'react/destructuring-assignment': 'error',
         'react/prefer-read-only-props': 'error',
 
+        // react-perf
+        'react-perf/jsx-no-new-object-as-prop': 'off',
+        'react-perf/jsx-no-new-array-as-prop': 'off',
+
         // react-native
         'react-native/no-inline-styles': 'warn',
 
@@ -70,7 +66,7 @@ module.exports = {
         'sort-imports': 'off',
         'import/order': 'off',
         'import/no-unresolved': 'off',
-        'unused-imports/no-unused-imports-ts': 'error',
+        'unused-imports/no-unused-imports': 'error',
         'import/no-extraneous-dependencies': 'error',
         'import/prefer-default-export': 'off',
         'import/no-default-export': 'error',
@@ -85,7 +81,7 @@ module.exports = {
         'no-console': 'error',
         'no-unused-vars': 'error',
 
-        'class-methods-use-this': 'off'
+        'class-methods-use-this': 'off',
     },
     overrides: [
         {

@@ -1,8 +1,10 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
 
-import { Pokemons, PokemonsFooter } from "../../../src/components";
-import PageContainer from "../../../src/components/page-container";
+import {
+  PageContainer,
+  Pokemons,
+  PokemonsFooter,
+} from "../../../src/components";
 import { usePokemonsQuery } from "../../../src/services/queries";
 
 const PokemonsScreen = () => {
@@ -10,9 +12,8 @@ const PokemonsScreen = () => {
     usePokemonsQuery();
 
   return (
-    <PageContainer title="Pokemons">
-      {isLoading && <ActivityIndicator />}
-      {!isLoading && data && (
+    <PageContainer title="Pokemons" isLoading={isLoading}>
+      {data && (
         <Pokemons
           items={data.pages.flat()}
           footer={

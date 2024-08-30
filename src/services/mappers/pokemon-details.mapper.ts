@@ -1,5 +1,5 @@
 import { PokemonDetails, PokemonMove, PokemonType } from "../../models";
-import { PokemonTypeColors } from "../../utils/pokemonTypeColors";
+import { PokemonTypeColors } from "../../utils";
 
 import {
   PokemonDetailsDto,
@@ -23,6 +23,6 @@ export const mapPokemonDetails = (dto: PokemonDetailsDto): PokemonDetails => ({
   id: dto.id,
   name: dto.name,
   types: dto.types.map(mapPokemonType),
-  moves: dto.moves.map(mapPokemonMove).slice(0, 15),
+  moves: dto.moves.map(mapPokemonMove).slice(0, 5),
   image: dto.sprites.front_default,
 });

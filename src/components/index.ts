@@ -1,3 +1,3 @@
-export * from "./pokemonDetails/pokemon-details";
-export * from "./pokemons/pokemons";
-export * from "./pokemons/pokemons-footer";
+export * from "./page";
+export * from "./pokemon-details";
+export * from "./pokemons";

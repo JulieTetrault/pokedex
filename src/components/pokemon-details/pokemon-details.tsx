@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Animated,
-  DimensionValue,
-  SectionList,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { SectionList, StyleSheet, Text, View } from "react-native";
 
 import {
   PokemonEvolution,
@@ -14,10 +7,9 @@ import {
   PokemonResourceLink,
   PokemonType,
 } from "../../models";
-import { PokemonResourceLinkCard } from "../pokemon-resource-link-card";
+import { PokemonResourceLinkCard } from "../common";
 
 import { PokemonTypeBadge } from "./pokemon-type-badge";
-import ScrollView = Animated.ScrollView;
 
 interface PokemonDetailsProps {
   types: PokemonType[];
@@ -44,7 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     marginBottom: 8,
-    width: "fit-content" as DimensionValue,
   },
 });
 
@@ -88,13 +79,14 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
   };
 
   return (
-    <ScrollView nestedScrollEnabled style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.typeContainer}>
         {types.map((type) => {
           return <PokemonTypeBadge type={type} key={type.name} />;
         })}
       </View>
       <SectionList
+        scrollEnabled={false}
         sections={getSections()}
         keyExtractor={(item) => item.name}
         renderItem={renderItem}
@@ -106,6 +98,6 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = ({
         )}
         ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
       />
-    </ScrollView>
+    </View>
   );
 };
